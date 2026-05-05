@@ -6,58 +6,65 @@
 <link rel=stylesheet href=../prizes/prize.css>
 
 <nav>
-    <menu>
-        <li><a href='../products/'>陀螺</a>
-        <li><a href='gear.html?launchers'>發射器</a>
-        <li><a href='gear.html?others'>其他</a>
-    </menu>
-    <form>
-        <fieldset class="LED">
-            <label>中<input name=lang type=radio value=chi checked></label>
-            <label>A<input name=lang type=radio value=eng></label>
-            <label>ア<input name=lang type=radio value=jap></label>
-        </fieldset>
-        <label>
-            <span>部件檢索</span>
-            <input type="search" placeholder=騎士/HN/low>
-        </label>
-        <output form="filter" name="count"></output>
-        <input type="reset" value="&#xe029; 重設">
+    <menu><br>
+        <li><a href='../products/'>陀螺</a><br>
+        <li><a href='gear.html?launchers'>發射器</a><br>
+        <li><a href='gear.html?others'>其他</a><br>
+    </menu><br>
+    <form><br>
+        <fieldset class="LED"><br>
+            <label>中<input name=lang type=radio value=chi checked></label><br>
+            <label>A<input name=lang type=radio value=eng></label><br>
+            <label>ア<input name=lang type=radio value=jap></label><br>
+        </fieldset><br>
+        <label><br>
+            <span>部件檢索</span><br>
+            <input type="search" placeholder=騎士/HN/low><br>
+        </label><br>
+        <label class="owned-toggle LED">
+            <span>擁有</span>
+            <input type="checkbox" name="ownedOnly">
+        </label><br>
+        <output form="filter" name="count"></output><br>
+        <input type="reset" value="&#xe029;&#8197;重設"><br>
     </form>
 </nav>
 
 <main>
-    <details class="stretch" open>
-        <summary onclick="return false">&#xe026;</summary>
-        <p>行尾的數字表示每箱所含的盒數；J表示日本以外未有發售；A表示經App獲得<br><br>
-            BXA：日本以外亞洲地區<br>
-            BXC：<ruby>コロコロ<rt>COROCORO</rt></ruby>雜誌相關<br>
-            BXG：各種<ruby>限定<rt>GENTEI</rt></ruby>產品<br>
-            BXH：<ruby>非売品<rt>HIBAIHIN</rt></ruby>如贈品、比賽獎品<br>
-            這些盒上都標記為BX/CX/UX-00
-        </p>
-    </details>
-    <div class="links">
-        <a href="//beyblade.phstudy.org" target=_blank>ph</a>
-        <a href="http://obakeblader.com/?s=入手法" target=_blank>お</a>
-    </div>
+    <details class="stretch" open><br>
+        <summary onclick="return false">&#xe026;</summary><br>
+        <p>
+            行尾的數字表示每箱所含的盒數；J表示日本以外未有發售；A表示經App獲得<br><br><br>
+            BXA：日本以外亞洲地區<br><br>
+            BXC：<ruby>コロコロ<rt>COROCORO</rt></ruby>雜誌相關<br><br>
+            BXG：各種<ruby>限定<rt>GENTEI</rt></ruby>產品<br><br>
+            BXH：<ruby>非売品<rt>HIBAIHIN</rt></ruby>如贈品、比賽獎品<br><br>
+            這些盒上都標記為BX/CX/UX-00<br>
+        </p><br>
+    </details><br>
+    <div class="links"><br>
+        <a href="//beyblade.phstudy.org" target=_blank>ph</a><br>
+        <a href="http://obakeblader.com/?s=入手法" target=_blank>お</a><br>
+    </div><br>
     <details>
-        <summary>&#xe027; 分類<i></i></summary>
-        <form id="filter" class="LED"></form>
-    </details>
-
+        <summary>&#xe027; 分類<i></i></summary><br>
+        <form id="filter" class="LED"></form><br>
+    </details><br>
     <table>
         <caption class="loading"></caption>
         <thead>
             <tr>
+                <th class="owned LED">
+                    <div>擁有<br>OWNED</div>
+                </th>
                 <th class="LED">
                     <div><input type="radio" name="sort">CODE</div>
                 </th>
                 <th colspan=6 class="LED blade">
-                    <div><input type="radio" name="sort">刃擊環⬧鋼鐵戰刃<br>BLADE</div>
+                    <div><input type="radio" name="sort">刃擊環&#9726;鋼鐵戰刃<br>BLADE</div>
                 </th>
                 <th colspan=1 class="LED ratchet">
-                    <div><input type="radio" name="sort">核輪⬧固鎖輪盤<br>RATCHET</div>
+                    <div><input type="radio" name="sort">核輪&#9726;固鎖輪盤<br>RATCHET</div>
                 </th>
                 <th colspan=2 class="LED bit">
                     <div><input type="radio" name="sort">軸心<br>BIT</div>
@@ -70,7 +77,7 @@
 </main>
 
 <script type="module">
-import DB from '../include/DB.js';
-import Table from './products.js';
-Q('.stretch').after(DB().then(Table));
+    import DB from '../include/DB.js';
+    import Table from './products.js';
+    Q('.stretch').after(DB().then(Table));
 </script>
