@@ -39,6 +39,7 @@ Object.assign(Table, {
  form: document.forms[0],
 
  events () {
+  const origOnChange = Table.form.onchange;
   E(Table.form).set({
    onkeydown:  ev => ev.key != 'Enter',
    onreset:    Table.reset,
@@ -49,7 +50,7 @@ Object.assign(Table, {
      Table.applyOwnedFilter();
      return;
     }
-    (!ev || ev.target.type === 'radio') && Cell.fill(Table.form.lang.value);
+    origOnChange && origOnChange(ev);
    },
    oninput:    ev => {
     if (ev.target.type !== 'search') return;
@@ -68,9 +69,9 @@ Object.assign(Table, {
    Table.applyOwnedFilter();
   };
 
-  Table.body.onclick = ({target}) => {
-   if (target.matches('.owned-box')) return;
-   Preview.for.table(...arguments);
+  Table.body.onclick = ev => {
+   if (ev.target.matches('.owned-box')) return;
+   Preview.for.table(ev);
   };
 
   Q('thead').onclick = Table.sort;
@@ -121,8 +122,8 @@ Object.assign(Table, {
 
  applyOwnedFilter () {
   [...Table.body.rows].forEach(tr => {
-   const hiddenByOther  = tr.classList.contains('hidden');
-   const hiddenByOwned  = Table.ownedOnly && !Table.owned.has(tr.dataset.owned);
+   const hiddenByOther = tr.classList.contains('hidden');
+   const hiddenByOwned = Table.ownedOnly && !Table.owned.has(tr.dataset.owned);
    tr.hidden = hiddenByOther || hiddenByOwned;
   });
   FilterForm.count();
